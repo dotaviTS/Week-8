@@ -13,9 +13,11 @@ Distributed Systems refer to a network of independent computers (nodes) that wor
 They enable parallel computation, enhance fault tolerance, and facilitate resource sharing, scaling applications beyond a single machine's capabilities.
 
 Why Elixir?
-Elixir, with its foundations on the Erlang virtual machine, provides intrinsic support for distributed computing. It simplifies building, monitoring, and maintaining distributed applications, making it an ideal choice for scalable and resilient systems. Elixir provides something that is not easy to do in other in other languages, the concept of rpc or remote procedure calls, out of the box.
+
+Elixir, with its foundations on the Erlang virtual machine, provides baked-in support for distributed computing. It simplifies building, monitoring, and maintaining distributed applications, making it an ideal choice for scalable and resilient systems. Elixir provides something that is not easy to do in other in other languages, the concept of rpc or remote procedure calls, out of the box.
 
 What to Expect Next WEek
+
 During Week 8, we will go into topics such as:
 
 - Nodes and Remote Connections: Understanding how to create and connect nodes in Elixir. You can read up on libcluster here, if you're interested.
