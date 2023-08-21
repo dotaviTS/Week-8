@@ -245,7 +245,8 @@ This code snippet demonstrates how to register a process across all connected no
 Description: Experiment with the :global module by creating, registering, and accessing processes across different nodes.
 Hint: Utilize :global.register_name/2 and :global.whereis_name/1.
 Sample Task: Register a process globally and then access it from another node.
-[MORE INFO](https://erlang.org/doc/man/global.html)
+
+- [MORE INFO](https://erlang.org/doc/man/global.html)
 
 
 ##### 5.2.2 Creating and Managing Processes Across Nodes
@@ -274,18 +275,18 @@ Process.monitor(pid)
 Step 3: Observe Behaviors
 Experiment with killing and restarting the process to understand fault tolerance and load balancing. You can kill the process on Node1 using:
 
-elixir
-Copy code
+```elixir
 # On Node1
 Process.exit(pid, :kill)
+```
 And observe on Node2 that a message is received, indicating that the process has terminated.
 
-elixir
-Copy code
+```elixir
 # On Node2
 receive do
   {:DOWN, _ref, :process, _pid, reason} -> IO.puts("Process terminated because of #{reason}")
 end
+```
 
 Fault Tolerance: Monitoring processes across nodes allows the system to detect failures and take corrective actions, such as restarting the process on another node.
 
