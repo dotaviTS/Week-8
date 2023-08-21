@@ -393,25 +393,112 @@ sequenceDiagram
     Coordinator->>Node2: Commit
 ```
 
-
 ### 5.4 Monitoring and Managing Distributed Systems
-Monitoring and managing distributed systems are essential for maintaining system health, performance, and reliability.
+
+Monitoring and managing distributed systems is essential for maintaining system health, performance, and reliability. In this section, we will create a weather station application in Elixir and use Telemetry to monitor temperature and humidity.
 
 #### 5.4.1 Telemetry
-Telemetry is a dynamic way to track and observe system behavior. It provides metrics and insights into your system's performance.
 
-#### Example 5.4: Using Telemetry to Monitor System Metrics
-##### Step 1: Integrate Telemetry with Your Application
-- Add the Telemetry library to your project.
-- Set up metrics and event handlers.
-##### Step 2: Monitor Specific Events
-- Define events to track, such as function calls or process state changes.
-- Analyze the collected data to understand system behavior.
+Telemetry is a powerful library for performance observability. It allows you to attach custom behavior to various events in your application.
 
-#### Exercise 5.5: Implement Distributed System Monitoring
-Description: Use tools like :observer.start to monitor nodes. Analyze communication, process states, and system health.
-Hint: Explore the Observer tool's features, such as viewing load charts and processes.
-Erlang Observer Tool Documentation
+##### Example 5.4: Using Telemetry to Monitor Weather Station Metrics
+
+###### Step 1: Create a New Elixir Project
+
+```bash
+mix new weather_station
+cd weather_station
+```
+
+###### Step 2: Add Telemetry Library to Your Project
+
+- Open mix.exs and add Telemetry to the dependencies:
+
+```elixir
+defp deps do
+  [
+    {:telemetry, "~> 0.4"}
+  ]
+end
+```
+
+Then run:
+```elixir
+mix.deps.get
+```
+
+###### Step 3: Create a Weather Station Module
+- Create a module that simulates collecting weather data and publishes telemetry events.
+
+```elixir
+defmodule WeatherStation do
+  def collect_data do
+    temperature = Enum.random(15..35)
+    humidity = Enum.random(30..70)
+
+    :telemetry.execute([:weather, :data], %{temperature: temperature, humidity: humidity}, %{})
+  end
+end
+```
+
+###### Step 4: Attach Telemetry Handlers
+- Create handlers to react to the telemetry events.
+
+```elixir
+defmodule WeatherStation.TelemetryHandler do
+  require Logger
+
+  def handle_event([:weather, :data], measurements, _metadata, _config) do
+    Logger.info("Collected weather data: Temperature #{measurements.temperature}°C, Humidity #{measurements.humidity}%")
+  end
+end
+
+:telemetry.attach("weather-data-handler", [:weather, :data], &WeatherStation.TelemetryHandler.handle_event/4, %{})
+```
+
+###### Step 5: Monitor Weather Data
+
+- You can now call WeatherStation.collect_data() to simulate data collection. Telemetry will log the temperature and humidity.
+
+```mermaid
+sequenceDiagram
+    participant WS as WeatherStation
+    participant Telemetry
+    participant Logger
+    WS->>Telemetry: Execute event
+    Telemetry->>Logger: Log weather data
+```
+
+##### Exercise 5.5: Implement System Monitoring
+- Description: Experiment with Telemetry by adding more metrics to the Weather Station, such as wind speed or pressure.
+- Hint: Define additional metrics and handlers, and experiment with various data visualization tools that integrate with Telemetry.
+
+[Telemmetry Docs](https://hexdocs.pm/telemetry/readme.html#installation)
+
+##### Further Reading and Self-Study:
+
+1. **Telemetry**: Explore the Telemetry library and its capabilities. This is a powerful tool for monitoring and managing distributed systems.
+    - [Telemetry Documentation](https://hexdocs.pm/telemetry/readme.html#installation)
+
+2. **Observer**: Use the Observer tool to visualize system metrics and behavior. This is a powerful tool for understanding system performance.
+
+    - [Observer Documentation](https://hexdocs.pm/observer/observer.html)
+
+3. **Monitoring and Managing Distributed Systems**: Explore tools and techniques for monitoring and managing distributed systems. This is essential for maintaining system health and performance.
+
+    - [Elixir Monitoring and Managing Distributed Systems](https://elixir-lang.org/getting-started/mix-otp/distributed-tasks-and-configuration.html#monitoring-and-managing-distributed-systems)
+
+4. **Distributed Systems**: Learn more about distributed systems and how they work. This is essential for understanding the concepts and techniques covered in this section.
+
+    - [Distributed Systems](https://en.wikipedia.org/wiki/Distributed_computing)
+
+5. **Fault Tolerance**: Explore fault tolerance and how it can be achieved in distributed systems. This is essential for building resilient systems.
+
+    - [Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)
+
+6. **Load Balancing**: Learn about load balancing and how it can be implemented in distributed systems. This is essential for building scalable systems.
+
+    - [Load Balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing))
 
 
 
