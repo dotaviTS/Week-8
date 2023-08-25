@@ -1,0 +1,137 @@
+# Networking
+
+## Introduction to IP and subnetting
+
+### IP Addressing
+
+IP(Internet Protocol) addressing is a method used to identify devices on a network. There are two versions of IP addresses: IPv4 and IPv6
+
+#### IPv4
+
+IPv4 addresses are 32-bit numbers often represented in dotted-decimal format, such as 192.168.1.1. They are divided into four octets, each ranging from 0 to 255.It is the underlying technology that makes it possible for us to connect our devices to the web
+
+#### IPv6
+
+IPv6 addresses are 128-bit numbers, represented in hexadecimal notation. They offer a much larger address space compared to IPv4.
+
+#### Subnetting
+
+Subnetting is the practice of dividing an IP network into smaller networks, called subnets. It helps in efficient IP address management and network isolation.
+
+#### Subnet Masks
+
+A subnet mask is used to identify the network portion of an IP address. It's often represented in the same format as an IPv4 address. For example, a subnet mask of 255.255.255.0 corresponds to a /24 prefix length.
+
+#### CIDR Notation
+
+CIDR (Classless Inter-Domain Routing) notation is a shorthand way to describe subnet masks. For example, 192.168.1.0/24 represents the 192.168.1.0 network with a 24-bit subnet mask.
+
+#### Subnetting Techniques
+
+Subnetting can be done manually or with the help of subnet calculators. It involves:
+
+* Determining the number of required subnets and hosts per subnet
+* Calculating the subnet mask
+* Identifying the range of IP addresses for each subnet
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Further Resources (NetworkChuck)
+
+#### 1. What is an IP Address? // You suck at subnetting
+
+* Networkchuck begins by explaining the purpose of subnetting, which is to divide a large network into smaller subnetworks.
+* He emphasizes that subnetting is crucial for efficient network management and resource allocation
+* He then introduces the concept of IP addresses and their binary representation
+* Next, Networkchuck delves into the process of converting decimal numbers to binary form using the powers of two method.
+  * Performing Short Division by Two with Remainder (for integer part)
+  * Performing Short Multiplication by Two with result (For fractional part) and Descending Powers of Two and Subtraction
+* Networkchuck explains that network masks determine which portion of an IP address represents the network ID and which part represents the host ID
+* The “255” address is always assigned to a broadcast address, and the “0” address is always assigned to a network address. Neither can be assigned to hosts, as they are reserved for these special purposes
+* CIDR notation, on the other hand, simplifies IP addressing by combining both elements into a single number
+
+#### 2. We ran out of IP addresses
+
+* The video begins by explaining that an IP address is a unique identifier assigned to each device connected to the internet.
+* However, with the exponential growth in internet usage, the world has run out of available IPv4 addresses
+* IPv4 was created in the 1980s and initially provided over four billion unique addresses
+* However, as more devices came online, this number quickly became insufficient
+* To address this issue, IPv6 was introduced in the late 1990s, offering an astronomical number of available addresses.
+* It is replacing IPv4 to accommodate the growing number of networks worldwide and help solve the IP address exhaustion problem.
+* IPv6 is faster than IPv4 in network devices because it lacks network-address translation (NAT).
+* Using IPv6 is a better choice for people that require high speed for their network processing
+* Despite this solution being available for decades, many internet service providers and companies have been slow to adopt IPv6 due to various reasons such as cost and compatibility concerns.
+* Consequently, there is still a significant reliance on IPv4 addresses
+* The consequences of running out of IP addresses are explored next in the video. It explains that without enough unique identifiers for devices, it becomes challenging for new users or businesses to connect to the internet directly
+* Instead, they must rely on network address translation (NAT) techniques or share IP addresses with other devices
+
+#### 3. we’re out of IP Addresses….but this saved us (Private IP Addresses)
+
+* The video begins by explaining that an IP address is a unique identifier assigned to each device connected to the internet.
+* However, with the increasing number of devices being connected to the internet, there has been a shortage of available public IP addresses.
+* This scarcity led to the development and adoption of private IP addresses
+* Private IP addresses are reserved for use within local networks, such as homes or offices, and are not directly accessible from outside these networks, which helps increase security.
+* The presenter explains that private IP addresses are divided into three ranges: 
+  * Class A: 10.0. 0.0 to 10.255. 255.255,
+  * Class B: 172.16. 0.0 to 172.31. 255.255,
+  * Class C: 192.168. 0.0 to 192.168. 255.255
+* By utilizing private IP addresses within local networks, organizations can conserve public IP address resources
+* Network Address Translation (NAT) is then introduced as a technique used to map multiple private IPs to a single public IP when accessing external resources on the internet
+* The video concludes by emphasizing that without private IP addresses and NAT, we would have run out of public IPs long ago
+* A public IP address is a public address assigned to your network by your internet service provider (ISP) and is used to provide access over the internet.
+* A private IP address, on the other hand, is one that is assigned to your device directly by your network router
+
+#### 4. I bet you can't do this (because you still suck at subnetting)
+
+* The video begins with an introduction to subnetting and its importance in dividing large networks into smaller, manageable subnetworks
+  * **Improved network performance**: By creating smaller networks, subnetting can help reduce network traffic and improve overall network performance
+  * **Enhanced security**: Subnetting can improve network security by separating different parts of the network into smaller subnetworks, making it harder for unauthorized access
+
+#### 5. What is a Subnet Mask??? (you NEED to know it!!)
+
+* IP addresses alone are not sufficient for efficient communication between devices, this is where subnet masks come into play
+* A [subnet](https://www.cloudflare.com/learning/network-layer/what-is-a-subnet/) mask is a 32-bit number that helps divide an IP address into two parts: the network portion and the host portion.
+* The presenter uses an analogy of a phone number to simplify this concept, comparing the area code to the network portion and the remaining digits to the host portion
+* The video then delves into binary representation, explaining that each octet in an IP address can be represented by eight bits
+* By using bitwise AND operation with the subnet mask, one can determine which part of an IP address belongs to the network and which part belongs to hosts
+* Furthermore, understanding subnet masks allows for efficient routing of data packets within networks
+* By dividing large networks into smaller subnets, organizations can optimize their network performance and security
+* Another analogy that explains subnets is sending a letter through mail via post office from one person to another, for example:
+  * Imagine Alice puts a letter in the mail that is addressed to Bob, who lives in the town right next to hers.
+  * For the letter to reach Bob as quickly as possible, it should be delivered right from Alice's post office to the post office in Bob's town, and then to Bob.
+  * If the letter is first sent to a post office hundreds of miles away, Alice's letter could take a lot longer to reach Bob.
+  * Like the postal service, networks are more efficient when messages travel as directly as possible.
+  * When a network receives data packets from another network, it will sort and route those packets by subnet so that the packets do not take an inefficient route to their destination.
+
+#### 6. let's subnet your home network // You SUCK at subnetting //
+
+* The host proceeds to explain how subnetting allows for efficient allocation of IP addresses by dividing them into smaller subnetworks
+* This is particularly useful for home networks, where multiple devices need to connect to the internet simultaneously.
+* By subnetting, one can avoid IP address conflicts and ensure smooth connectivity.
+* The video further delves into the technical aspects of subnetting, such as binary representation and calculating subnets using CIDR notation
+
+#### 7. subnetting my coffee shop
+
+* The host proceeds to explain how subnetting allows for efficient allocation of IP addresses by dividing a large network into smaller subnetworks.
+* He uses the analogy of a coffee shop with multiple tables to illustrate this concept. Each table represents a subnet, and each customer at the table represents an IP address.
+* Variable Length Subnet Masking (VLSM) where the subnet design uses more than one mask in the same network which means more than one mask is used for different subnets of a single class A, B, C or a network.
+* It is used to increase the usability of subnets as they can be of variable size.
+
+#### 8. Subnetting…..but in reverse
+
+* The presenter dives into the reverse subnetting process, which involves starting with a given IP address range and determining the number of subnets and hosts within each subnet
+* This approach is particularly useful for network administrators who need to allocate IP addresses efficiently.
+* The presenter explains how to calculate the number of subnets by determining the number of bits required for each subnet mask.
+* They also demonstrate how to calculate the number of hosts within each subnet by subtracting two from 2^n, where n represents the number of host bits
+* Throughout the video, the presenter emphasizes important concepts such:
+  * **network address**: a logical or physical address that uniquely identifies a host or a machine in a telecommunication network.
+  * **broadcast address**: The broadcast address is always identified in the final part of the host part of an address (starts in the third or fourth octet): If all host bits are set to the binary value “1”, this is the broadcast address. If all host bits are set to the value “0”, this is the subnet address.
+  * **valid host range**: the numbers between the subnet number and the mask. For the 64 subnet, the valid host range is 64-126. For the 128 subnet, the valid host range is 129-190
+
+#### 9. Do you STILL suck at subnetting?? (THE FINAL TEST) //
+
+* The host begins by explaining that subnetting is the process of dividing a network into smaller subnetworks, which allows for efficient use of IP addresses
+* He then proceeds to review key subnetting concepts, such as:
+  * **[IP address classes](https://www.guru99.com/ip-address-classes.html)**: classes A, B, C offers addresses for networks of three distinct network sizes. Class D is only used for multicast, and class E reserved exclusively for experimental purposes
+  * **default masks**: is based on the IP address classes we discussed earlier and is used on networks that are not subdivided.
+  * **binary-to-decimal conversion**: Binary to decimal conversion is done to convert a number in a binary number system (base-2) to a number in a decimal number system (base-10)
