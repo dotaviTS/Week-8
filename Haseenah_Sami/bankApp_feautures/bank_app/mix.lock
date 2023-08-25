@@ -1,0 +1,3 @@
+%{
+  "tabula": {:hex, :tabula, "2.1.1", "a04f908bddd596282e95e6469b0ac0fc163eb7c446db8ee6dbea106e5b2f7096", [:mix], [], "hexpm", "b7cc4a69180696a7870eab299402d9764737a0e89bb3cf7edc153fe40460ff3f"},
+}
