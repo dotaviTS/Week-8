@@ -10,4 +10,3 @@ defmodule Friends.Repo.Migrations.CreateDistributors do
     create unique_index(:distributors, [:movie_id])
   end
 end
-end
