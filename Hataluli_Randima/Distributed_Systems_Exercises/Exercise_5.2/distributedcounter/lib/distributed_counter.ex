@@ -5,11 +5,11 @@ defmodule DistributedCounter do
   # Client API
   def start_link(initial_count \\ 0) do
     GenServer.start_link(__MODULE__, initial_count, name: __MODULE__)
-end
+  end
 
-def init(init_arg) do
+  def init(init_arg) do
   {:ok, init_arg}
-end
+  end
 
 def increment() do
   GenServer.call(DistributedCounter, :increment)
