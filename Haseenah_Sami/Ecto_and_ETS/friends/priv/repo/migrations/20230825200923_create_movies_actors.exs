@@ -8,5 +8,4 @@ defmodule Friends.Repo.Migrations.CreateMoviesActors do
     end
     create unique_index(:movies_actors, [:movie_id, :actor_id])
   end
-  end
 end
