@@ -7,3 +7,4 @@ defmodule Friends.Repo.Migrations.CreatePeople do
       add :age, :integer, default: 0
   end
 end
+end
