@@ -1,0 +1,10 @@
+"filename", "language", "Elixir", "comment", "blank", "total"
+"/home/sipho/bankaccount/.formatter.exs", "Elixir", 3, 1, 1, 5
+"/home/sipho/bankaccount/lib/bank_registry.ex", "Elixir", 5, 0, 2, 7
+"/home/sipho/bankaccount/lib/bankaccount.ex", "Elixir", 60, 2, 13, 75
+"/home/sipho/bankaccount/lib/banksupervisor.ex", "Elixir", 12, 4, 3, 19
+"/home/sipho/bankaccount/mix.exs", "Elixir", 26, 4, 4, 34
+"/home/sipho/bankaccount/mix.lock", "Elixir", 8, 0, 1, 9
+"/home/sipho/bankaccount/test/bank_account_test.exs", "Elixir", 4, 0, 3, 7
+"/home/sipho/bankaccount/test/test_helper.exs", "Elixir", 1, 0, 1, 2
+"Total", "-", 119, 11, 28, 158
